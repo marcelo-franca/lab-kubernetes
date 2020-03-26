@@ -6,7 +6,7 @@
     state: present
    #state: present
     shell: "{{item.comando}}"
-    password: "$1$.5Qm0.l/$bfdzA/bQa2G6SudU2FLR5/"
+    password: "$1$.5Qm0.l/$bfdzA/bQa2G6SudU2FLR5/" # Password: 123456
     group: "{{item.group}}"
   with_items:
     - {nome: "{{ ssh_user }}", comando: "/bin/bash", group: "sudo" }
