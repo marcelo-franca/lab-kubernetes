@@ -1,5 +1,5 @@
 ---
-# tasks file for ansible-rancher
+# tasks file for ansible-kubernetes
 - name: "Install base packages"
   import_tasks: base_packages.yaml
 - name: "Create users"
@@ -12,7 +12,5 @@
 #  import_tasks: install_docker.yaml
 #- name: Config Firewall
 #  import_tasks: securityconf.yaml
-#- name: Config /etc/hosts file
-#  import_tasks: hosts.yaml
-#- name: Start Rancher container
-#  import_tasks: start-rancher.yaml
+- name: Config /etc/hosts file
+  import_tasks: hosts.yaml

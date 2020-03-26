@@ -9,7 +9,7 @@
     line: "{{ item.ip }} {{ item.fqdn }} {{ item.alias }}"
   with_items:
     - { ip: '127.0.0.1', fqdn: 'localhost.localdomain', alias: 'localhost' }
-    - { ip: '{{ rancher_host }}', fqdn: '{{ rancher_fqdn }}', alias: '{{ rancher_alias }}' }
+    - { ip: '{{ master_host }}', fqdn: '{{ master_fqdn }}', alias: '{{ master_alias }}' }
     - { ip: '{{ node01_host }}', fqdn: '{{ node01_fqdn }}', alias: '{{ node01_alias }}' }
     - { ip: '{{ node02_host }}', fqdn: '{{node02_fqdn }}', alias: '{{ node02_alias }}' }
   tags: baseconfig

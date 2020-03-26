@@ -1,0 +1,16 @@
+---
+# defaults file for ansible-kubernetes
+
+master_fqdn: prometheus.mitlabs.com.br
+master_host: 192.168.92.50
+master_alias: prometheus
+node01_fqdn: alien01.mitlabs.com.br
+node01_host: 192.168.92.51
+node01_alias: alien01
+node02_fqdn: alien02.mitlabs.com.br
+node02_host: 192.168.92.52
+node02_alias: alien02
+#############################################
+sshd_config: /etc/ssh/sshd_config
+sshd: ssh
+ssh_user: marcelo

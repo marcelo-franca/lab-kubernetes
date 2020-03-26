@@ -1,6 +1,3 @@
 - hosts: all
   roles:
-     - { role: ansible-rancher, become: yes, become_user: root }
-#     - { role: ansible-rancher, rancher: 192.168.15.10, become: yes, become_user: root }
-#     - { role: ansible-node01, node01: 192.168.15.11, become: yes, become_user: root }
-#     - { role: ansible-node02, node02: 192.168.15.12, become: yes, become_user: root }
+     - { role: ansible-kubernetes, become: yes, become_user: root }
