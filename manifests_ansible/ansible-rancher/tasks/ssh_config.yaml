@@ -1,0 +1,11 @@
+---
+- name: Enable Password Authentication via SSH
+  when: ansible_distribution|lower == 'ubuntu'
+  #lineinfile: dest="{{ sshd_config }}" regexp="^(#\s*)?PasswordAuthentication' line='PasswordAuthentication no'
+  #notify: restart sshd
+  lineinfile:
+    path: "{{ sshd_config }}"
+    regexp: '^(#\s*)?PasswordAuthentication\ no'
+    line: 'PasswordAuthentication yes'
+  notify: restart sshd
+  tags: baseconfig

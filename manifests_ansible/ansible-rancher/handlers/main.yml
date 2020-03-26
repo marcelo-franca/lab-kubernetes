@@ -1,0 +1,6 @@
+---
+# handlers file for ansible-monitoring
+- name: Start Docker
+  service: name=docker state=started
+- name: restart sshd
+  service: name={{ sshd }} state=restarted

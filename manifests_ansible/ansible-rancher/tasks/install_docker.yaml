@@ -1,0 +1,23 @@
+---
+- name: Install docker-ce on Ubuntu
+  when: ansible_distribution|lower == 'ubuntu'
+  apt:
+   name: "{{ docker_packages }}"
+   state: latest
+   update_cache: yes
+  tags: dockerconfig
+- name: Install docker-ce on CentOS
+  when: ansible_distribution|lower == 'centos'
+  yum:
+   name: "{{ docker_packages }}"
+   state: present
+  notify:
+   - Start Docker
+  tags: dockerconfig
+- name: Enable and start Docker
+  when: ansible_distribution|lower == 'centos'
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+  tags: dockerconfig

@@ -1,0 +1,15 @@
+---
+- name: Create SSH User on Ubuntu
+  when: ansible_distribution|lower == 'ubuntu'
+  user:
+    name: "{{item.nome}}"
+    state: present
+   #state: present
+    shell: "{{item.comando}}"
+    password: "$1$.5Qm0.l/$bfdzA/bQa2G6SudU2FLR5/"
+    group: "{{item.group}}"
+  with_items:
+    - {nome: "{{ ssh_user }}", comando: "/bin/bash", group: "sudo" }
+   #- {nome: developer, comando: "/bin/bash" }
+   #- {nome: devops, comando: "/bin/bash" }
+  tags: baseconfig

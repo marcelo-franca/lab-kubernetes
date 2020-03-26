@@ -1,0 +1,28 @@
+- name: Applying Firewall Port Rules
+  when: ansible_distribution|lower == 'centos'
+  firewalld:
+    port: "{{ item.port }}/{{ item.protocol }}"
+    permanent: yes
+    state: enabled
+    immediate: yes
+  with_items:
+    - { port: 22, protocol: tcp }
+    - { port: 80, protocol: tcp }
+    - { port: 443, protocol: tcp }
+    - { port: 2376, protocol: tcp }
+    - { port: 2379, protocol: tcp }
+    - { port: 2380, protocol: tcp }
+    - { port: 6443, protocol: tcp }
+    - { port: 8472, protocol: udp }
+    - { port: 9099, protocol: tcp }
+    - { port: 10250, protocol: tcp }
+    - { port: 10254, protocol: tcp }
+    - { port: 30000-32767, protocol: tcp }
+    - { port: 30000-32767, protocol: udp } 
+  tags: security
+- name: Define SELinux para permissive no CentOS/RedHat 7
+  when: ansible_distribution|lower == 'centos'
+  selinux:
+    policy: targeted
+    state: permissive
+  tags: security

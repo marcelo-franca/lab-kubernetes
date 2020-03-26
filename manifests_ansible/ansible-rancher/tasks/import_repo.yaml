@@ -1,0 +1,26 @@
+---
+- name: Adiciona chave GPG oficial do Docker Ubuntu
+  when: ansible_distribution|lower == 'ubuntu'
+  apt_key: 
+   url: https://download.docker.com/linux/ubuntu/gpg
+   state: present
+  tags: dockerconfig
+- name: Importa repositorio Docker Ubuntu
+  when: ansible_distribution|lower == 'ubuntu'
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+  tags: dockerconfig
+- name: Import Docker repo on CentOS
+  when: ansible_distribution|lower == 'centos'
+  get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docer-ce.repo
+  tags: dockerconfig
+- name: Enable Docker Test repo
+  when: ansible_distribution|lower == 'centos'
+  ini_file:
+    dest: /etc/yum.repos.d/docer-ce.repo
+    section: 'docker-ce'
+    option: enabled
+  tags: dockerconfig

@@ -1,0 +1,20 @@
+---
+- name: Install Base packages Ubuntu
+  when: ansible_distribution|lower == 'ubuntu'
+  apt:
+   name: "{{ubuntu_packages}}"
+   state: latest
+  tags: baseconfig
+- name: Install Base packages CentOS
+  when: ansible_distribution|lower == 'centos'
+  yum:
+   name: "{{centos_packages}}"
+   state: latest
+  tags: baseconfig
+- name: Enable and start Firewalld
+  when: ansible_distribution|lower == 'centos'
+  systemd:
+    name: firewalld
+    state: started
+    enabled: yes
+  tags: baseconfig

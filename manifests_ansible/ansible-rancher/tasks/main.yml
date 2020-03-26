@@ -1,0 +1,18 @@
+---
+# tasks file for ansible-rancher
+- name: "Install base packages"
+  import_tasks: base_packages.yaml
+- name: "Create users"
+  import_tasks: create_users.yaml
+- name: "Configure sshd"
+  import_tasks: ssh_config.yaml
+#- name: "Add Docker repo"
+#  import_tasks: import_repo.yaml
+#- name: Install latest Docker version
+#  import_tasks: install_docker.yaml
+#- name: Config Firewall
+#  import_tasks: securityconf.yaml
+#- name: Config /etc/hosts file
+#  import_tasks: hosts.yaml
+#- name: Start Rancher container
+#  import_tasks: start-rancher.yaml
